@@ -57,3 +57,4 @@ video, submission.
   make prep-video. Blok L: cover PNG export, git history audit, API marked done.
 - 2026-09-12 — make submission-check, docs/SUBMIT.md, test_submission asset smoke.
 - 2026-09-12 — init_public_repo.sh + make init-repo (dry-run / --commit, no push).
+- 2026-09-12 — Initial commit 0a60ceb (70 files). audit_git_secrets self-match fix.
