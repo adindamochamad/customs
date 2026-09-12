@@ -32,8 +32,13 @@ Python, FastAPI, MCP (Model Context Protocol), SQLite, SHA-256, stdio transport
 
 ## Video presentation
 ≤ 5 minutes, ≤ 300 MB. See DEMO_SCRIPT.md and VIDEO_SCRIPT.md.
+Teleprompter: `docs/assets/teleprompter.html`
 
 **URL:** _(paste after upload — required for form)_
+
+## Slide presentation
+PDF, 16:9. Source: `docs/assets/slides.html` → export via `bash scripts/export_slides_pdf.sh` or browser Print → PDF.
+Output: `docs/assets/slides.pdf`
 
 ## Public GitHub repository
 https://github.com/adindamochamad/customs — public, MIT. Verified: `git clone` + `make verify-clone` → 40 passed in ~43s.

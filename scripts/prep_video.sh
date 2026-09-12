@@ -16,6 +16,8 @@ REQUIRED=(
   docs/assets/deployment-paths.svg
   docs/assets/rugpull-diff.html
   docs/assets/rugpull-diff.txt
+  docs/assets/slides.html
+  docs/assets/teleprompter.html
   docs/VIDEO_SCRIPT.md
 )
 

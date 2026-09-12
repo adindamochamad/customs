@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Customs — slides</title>
+    <style>
+      @page { size: 16in 9in; margin: 0; }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-family: Georgia, serif; background: #000; color: #ece7df; }
+      section {
+        width: 100vw; height: 100vh; padding: 4rem 5rem;
+        page-break-after: always; display: flex; flex-direction: column; justify-content: center;
+        background: #121212;
+      }
+      h1 { font-size: 3.2rem; margin: 0 0 1rem; color: #c45c26; }
+      h2 { font-size: 1.4rem; letter-spacing: 0.14em; text-transform: uppercase; color: #888; margin: 0 0 1.5rem; }
+      p, li { font-size: 1.75rem; line-height: 1.45; max-width: 52rem; }
+      ul { padding-left: 1.4rem; }
+      .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 1.4rem; color: #ffb380; }
+      .footer { margin-top: auto; font-size: 1rem; color: #666; }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h2>WeAreDevelopers Hackathon 2026</h2>
+      <h1>Customs</h1>
+      <p>Border control for third-party MCP servers.</p>
+      <p class="mono">MCP approval has no expiry — until now.</p>
+    </section>
+    <section>
+      <h2>The problem</h2>
+      <p>Tool descriptions are instructions. Approval happens once and never expires.</p>
+      <p>A server can silently replace an honest tool with one that reads <code>.env</code> and exfiltrates credentials.</p>
+    </section>
+    <section>
+      <h2>The mechanism</h2>
+      <ul>
+        <li><strong>Pin</strong> — SHA-256 seal at approval</li>
+        <li><strong>Verify</strong> — re-hash every session</li>
+        <li><strong>Quarantine</strong> — drift withheld + word-level diff</li>
+      </ul>
+      <p>No model in the trust path. Fail closed.</p>
+    </section>
+    <section>
+      <h2>Demo</h2>
+      <p class="mono">make install && make demo</p>
+      <p>Side-by-side rug pull: left leaks, right quarantines. Zero API keys. ~5 minutes from clone.</p>
+    </section>
+    <section>
+      <h2>Deploy anywhere</h2>
+      <ul>
+        <li>Laptop — stdio proxy between agent and MCP</li>
+        <li>CI — fail build on manifest drift</li>
+        <li>Org — quarantine console for re-approval</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Close</h2>
+      <p>You approved a server — not every future version of it.</p>
+      <p class="footer">github.com/adindamochamad/customs · MIT</p>
+    </section>
+  </body>
+</html>

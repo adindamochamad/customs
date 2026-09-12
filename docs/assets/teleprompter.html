@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customs video teleprompter</title>
+    <style>
+      :root { --speed: 28px; }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; background: #000; color: #fff;
+        font: 2rem/1.55 Georgia, serif;
+      }
+      .controls {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 2;
+        display: flex; gap: 0.75rem; padding: 0.75rem 1rem; background: #111;
+        font: 0.9rem ui-monospace, monospace;
+      }
+      button, input { font: inherit; padding: 0.35rem 0.6rem; }
+      .scroll {
+        padding: 5rem 10vw 60vh;
+        animation: scroll var(--duration, 280s) linear infinite;
+        animation-play-state: paused;
+      }
+      .scroll.playing { animation-play-state: running; }
+      .cue { color: #c45c26; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; margin: 2.5rem 0 0.5rem; }
+      @keyframes scroll { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+    </style>
+  </head>
+  <body>
+    <div class="controls">
+      <button id="play">Play</button>
+      <button id="reset">Reset</button>
+      <label>Speed <input id="speed" type="range" min="200" max="400" value="280" /></label>
+    </div>
+    <div class="scroll" id="scroll">
+      <div class="cue">0:00 — Hook</div>
+      <p>You approved this MCP server last week. Tonight it still connects. Your agent still trusts it. And your credentials just left the building — with a success checkmark.</p>
+      <div class="cue">0:12 — Rug pull</div>
+      <p>MCP tool descriptions are instructions. Approval happens once — and never expires. Here is get_weather before and after. One honest sentence became an instruction to read dot env and pass the contents along. Nothing in the protocol flagged it.</p>
+      <div class="cue">0:50 — Demo</div>
+      <p>Same scenario, two columns. Left: no Customs — the agent exfiltrates. Right: Customs — seal breaks, traffic stops, diff on screen. Clone, install, demo — under five minutes.</p>
+      <div class="cue">2:40 — Mechanism</div>
+      <p>Pin — SHA-256 at approval. Verify — re-hash every session. Quarantine — drift withheld, word-level diff. No model in the trust path. Fail closed everywhere.</p>
+      <div class="cue">3:20 — Deployment</div>
+      <p>On a laptop: stdio proxy. In CI: pin manifests, fail on drift. In an org: quarantine console — re-approve with evidence.</p>
+      <div class="cue">4:10 — Close</div>
+      <p>You approved a server — not every future version of it. Customs gives MCP approval an expiry.</p>
+    </div>
+    <script>
+      const scroll = document.getElementById("scroll");
+      const playBtn = document.getElementById("play");
+      const speed = document.getElementById("speed");
+      playBtn.onclick = () => {
+        scroll.classList.toggle("playing");
+        playBtn.textContent = scroll.classList.contains("playing") ? "Pause" : "Play";
+      };
+      document.getElementById("reset").onclick = () => {
+        scroll.classList.remove("playing");
+        playBtn.textContent = "Play";
+        scroll.style.animation = "none";
+        void scroll.offsetHeight;
+        scroll.style.animation = "";
+      };
+      speed.oninput = () => {
+        scroll.style.setProperty("--duration", speed.value + "s");
+      };
+    </script>
+  </body>
+</html>

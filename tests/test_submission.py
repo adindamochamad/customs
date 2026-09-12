@@ -22,5 +22,7 @@ def test_video_assets_exist() -> None:
         "opening-card.svg",
         "pin-verify-quarantine.svg",
         "deployment-paths.svg",
+        "slides.html",
+        "teleprompter.html",
     ):
         assert (ASSETS / name).is_file(), name

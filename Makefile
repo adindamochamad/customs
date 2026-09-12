@@ -35,3 +35,6 @@ init-repo:
 
 print-submission:
 	bash scripts/print_submission_fields.sh
+
+export-slides:
+	bash scripts/export_slides_pdf.sh
