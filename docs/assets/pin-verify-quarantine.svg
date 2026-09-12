@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Pin verify quarantine">
+  <rect width="1920" height="1080" fill="#121212"/>
+  <text x="960" y="120" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#ece7df">
+    Deterministic  no model in the trust path
+  </text>
+  <rect x="120" y="320" width="480" height="420" rx="12" fill="#1c1c1c" stroke="#c45c26" stroke-width="3"/>
+  <text x="360" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#c45c26">PIN</text>
+  <text x="360" y="480" text-anchor="middle" font-family="monospace" font-size="22" fill="#ece7df">SHA-256 seal</text>
+  <text x="360" y="530" text-anchor="middle" font-family="monospace" font-size="22" fill="#888">at approval</text>
+  <path d="M620 530 L760 530" stroke="#888" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="720" y="320" width="480" height="420" rx="12" fill="#1c1c1c" stroke="#c45c26" stroke-width="3"/>
+  <text x="960" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#c45c26">VERIFY</text>
+  <text x="960" y="480" text-anchor="middle" font-family="monospace" font-size="22" fill="#ece7df">re-hash every</text>
+  <text x="960" y="530" text-anchor="middle" font-family="monospace" font-size="22" fill="#ece7df">session</text>
+  <path d="M1220 530 L1360 530" stroke="#888" stroke-width="4" marker-end="url(#arrow)"/>
+  <rect x="1320" y="320" width="480" height="420" rx="12" fill="#1c1c1c" stroke="#8b3a2a" stroke-width="3"/>
+  <text x="1560" y="400" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#8b3a2a">QUARANTINE</text>
+  <text x="1560" y="480" text-anchor="middle" font-family="monospace" font-size="22" fill="#ece7df">drift withheld</text>
+  <text x="1560" y="530" text-anchor="middle" font-family="monospace" font-size="22" fill="#888">word-level diff</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#888"/>
+    </marker>
+  </defs>
+</svg>

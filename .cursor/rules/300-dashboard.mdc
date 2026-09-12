@@ -1,0 +1,22 @@
+---
+description: Rules for the Next.js quarantine console.
+globs: dashboard/**
+alwaysApply: false
+---
+
+The dashboard is the surface the demo video films. Two consequences:
+
+1. It renders real data from a running proxy. Never mock, never seed, never
+   fake a diff for the screenshot. A judge who spots a mock discards the whole
+   submission.
+2. The quarantine detail screen — the word-level diff — is the single most
+   important screen in the project. It is what a judge pauses on. Legibility at
+   1920×1080 without horizontal scrolling is a hard requirement; diff render
+   under 100 ms.
+
+Encode seal status in shape as well as colour (pill plus text), never colour
+alone. Semantic status colour is separate from the accent hue.
+
+Do not scaffold this before Gate 1 passes. If Gate 2 slips, this whole
+directory is cut and replaced with coloured terminal output — build nothing
+here that the terminal path would have to reimplement.

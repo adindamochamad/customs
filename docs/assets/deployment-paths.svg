@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-label="Deployment paths">
+  <rect width="1920" height="1080" fill="#121212"/>
+  <text x="960" y="100" text-anchor="middle" font-family="Georgia, serif" font-size="36" fill="#ece7df">
+    Where Customs runs
+  </text>
+  <rect x="160" y="280" width="440" height="360" rx="12" fill="#1c1c1c" stroke="#c45c26" stroke-width="2"/>
+  <text x="380" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#c45c26">Laptop</text>
+  <text x="380" y="430" text-anchor="middle" font-family="monospace" font-size="20" fill="#ece7df">stdio proxy</text>
+  <text x="380" y="470" text-anchor="middle" font-family="monospace" font-size="20" fill="#888">agent ’ Customs ’ MCP</text>
+  <rect x="740" y="280" width="440" height="360" rx="12" fill="#1c1c1c" stroke="#c45c26" stroke-width="2"/>
+  <text x="960" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#c45c26">CI gate</text>
+  <text x="960" y="430" text-anchor="middle" font-family="monospace" font-size="20" fill="#ece7df">pin on approve</text>
+  <text x="960" y="470" text-anchor="middle" font-family="monospace" font-size="20" fill="#888">fail build on drift</text>
+  <rect x="1320" y="280" width="440" height="360" rx="12" fill="#1c1c1c" stroke="#c45c26" stroke-width="2"/>
+  <text x="1540" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="32" fill="#c45c26">Org policy</text>
+  <text x="1540" y="430" text-anchor="middle" font-family="monospace" font-size="20" fill="#ece7df">quarantine console</text>
+  <text x="1540" y="470" text-anchor="middle" font-family="monospace" font-size="20" fill="#888">re-approve with evidence</text>
+</svg>

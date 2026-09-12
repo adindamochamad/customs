@@ -1,0 +1,21 @@
+---
+description: Python conventions for the customs package, demo and tests.
+globs: customs/**/*.py,demo/**/*.py,tests/**/*.py
+alwaysApply: false
+---
+
+- Python 3.11+. `from __future__ import annotations` is the first import in
+  every module.
+- Full type hints on every public function. Return `| None` rather than raising
+  for expected absence.
+- Pydantic v2 models live in `customs/models.py` and nowhere else. Config is a
+  frozen dataclass in `customs/config.py`.
+- No ORM, no SQLAlchemy. `store.py` uses `sqlite3` directly with explicit SQL.
+- ruff, line length 100. Run `make lint` before considering work finished.
+- pytest with `asyncio_mode = auto`. Tests are named for the behaviour they
+  protect, not the function they call.
+- Docstrings state why the module exists and what it must not do. Keep the
+  existing declarative voice. Do not add restating comments above obvious code.
+- Do not introduce a dependency without justifying it in the commit message.
+  Every dependency must be MIT/BSD/Apache-2.0 compatible.
+- Never leave a `TODO`. Deferred work goes on the cut list in AGENTS.md.

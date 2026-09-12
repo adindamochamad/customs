@@ -1,0 +1,34 @@
+---
+description: Customs project context, invariants, build order. Read before any change.
+alwaysApply: true
+---
+
+Customs is border control for third-party MCP servers: it pins a SHA-256 seal
+over each tool manifest at approval time, re-verifies every session, and
+quarantines drifted servers with a word-level diff.
+
+Thesis: **MCP approval has no expiry. Customs gives it one.**
+
+Read `AGENTS.md` at the repo root in full before writing code. It carries the
+invariants, the current state, the build order with gates, and the cut list.
+Read `docs/DECISIONS.md` before proposing a change to architecture or scope —
+those trade-offs are already decided, with reasons.
+
+Non-negotiable, repeated here because they are easy to break by accident:
+
+1. No model in the trust path. Hashing decides; `inspect.py` only labels.
+2. Fail closed. No allow-on-error branch exists.
+3. Never invent MCP payload shapes — use fixtures in `tests/fixtures/`, and if
+   one is missing, stop and say so.
+4. `make install && make demo` must work from a clean clone in under 5 minutes
+   with zero API keys.
+
+Every module under `customs/` is currently a contract with a
+`NotImplementedError` body and `xfail` tests. The work is removing xfail
+markers in the order given in AGENTS.md — `manifest.py` first. Nothing is
+implemented yet; do not assume a module works because its docstring reads as if
+it does.
+
+This is a 7-day solo hackathon build with asynchronous video judging. Prefer
+the smallest change that can be filmed working over the more complete change
+that cannot.

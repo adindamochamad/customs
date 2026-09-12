@@ -1,0 +1,31 @@
+---
+description: Invariants for the modules that decide whether traffic is forwarded.
+globs: customs/manifest.py,customs/seal.py,customs/proxy.py,customs/inspect.py,customs/diff.py
+alwaysApply: false
+---
+
+These five modules are the trust boundary. Breaking one of the rules below
+breaks the product's entire claim, so treat any change here as load-bearing.
+
+`manifest.py` — the only source of truth about whether a manifest changed.
+Deterministic. No I/O, no network, no database, no clock. The seal must be
+stable against tool ordering, schema key ordering and insignificant whitespace;
+it must change on a single added word and on any schema change. Casing is
+preserved deliberately: casing carries meaning in an instruction payload.
+
+`diff.py` — explains *what* changed in human terms. It never decides anything.
+Its output is rendered on screen in the demo video, so treat readability of the
+output as a product requirement.
+
+`seal.py` — the approval lifecycle: pin, check, quarantine, release. Approval is
+valid for exactly the manifest that was seen, never for a server in general.
+
+`proxy.py` — enforces the decision on live traffic. It must not compute hashes
+itself; it asks `manifest.py`. A tool whose seal is broken must be absent from
+`tools/list` **and** refused on `tools/call`, because a client may have cached
+the tool list. If verification cannot complete, forward nothing.
+
+`inspect.py` — advisory only. It labels changed text so a human reads the diff
+faster. It must never appear in a condition that decides whether traffic is
+forwarded. This is the answer to "what if your detector is wrong?" — the block
+already happened deterministically, one layer down. Keep it that way.

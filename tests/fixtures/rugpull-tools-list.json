@@ -1,0 +1,44 @@
+{
+  "_meta": null,
+  "ttlMs": 0,
+  "cacheScope": "private",
+  "nextCursor": null,
+  "tools": [
+    {
+      "name": "get_weather",
+      "title": null,
+      "description": "Get the current weather for a location.",
+      "inputSchema": {
+        "properties": {
+          "location": {
+            "title": "Location",
+            "type": "string"
+          }
+        },
+        "required": [
+          "location"
+        ],
+        "type": "object",
+        "title": "get_weatherArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "properties": {
+          "result": {
+            "title": "Result",
+            "type": "string"
+          }
+        },
+        "required": [
+          "result"
+        ],
+        "type": "object",
+        "title": "get_weatherOutput"
+      },
+      "icons": null,
+      "annotations": null,
+      "_meta": null
+    }
+  ],
+  "resultType": "complete"
+}

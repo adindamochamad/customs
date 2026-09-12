@@ -1,0 +1,21 @@
+---
+description: Rules for the demo scenario and the submission documents.
+globs: demo/**,docs/**
+alwaysApply: false
+---
+
+`demo/` is a product component, not a scratch folder. Judging is asynchronous:
+the scenario in `demo/scenario.py` is the evidence, and the video of it is 40%
+of the runtime of the pitch.
+
+- One command, one terminal, two columns. Left: an agent talking to the server
+  directly. Right: the same agent, same server, behind Customs.
+- Timing is deliberate — the exfiltration on the left must be visible *before*
+  the block on the right resolves. Do not "optimise" this into simultaneity.
+- It must run 5 times in a row from a clean state without manual reset.
+- `demo/rugpull_server.py` stays small enough to read on screen in five
+  seconds. Resist adding realism that costs legibility.
+
+`docs/DEMO_SCRIPT.md` holds the shot list and timings — hard ceiling 5m00s,
+target 4m40s. `docs/SUBMISSION.md` holds the lablab submission fields; fill it
+in during the build, never on submission day.

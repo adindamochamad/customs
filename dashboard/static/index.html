@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customs — Quarantine Console</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --paper: #f4efe6;
+        --ink: #1b1a17;
+        --bg: #121212;
+        --panel: #1c1c1c;
+        --accent: #c45c26;
+        --sealed: #3d8b5a;
+        --broken: #c0392b;
+        --added: #7dcea0;
+        --removed: #f1948a;
+        --muted: #9a948a;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font: 18px/1.45 "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
+        background: var(--bg);
+        color: #ece7df;
+      }
+      header {
+        padding: 1.25rem 1.5rem;
+        border-bottom: 1px solid #333;
+        background: linear-gradient(180deg, #1f1a14, #121212);
+      }
+      header h1 {
+        margin: 0;
+        font-size: 1.1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      header p { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.95rem; }
+      main { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1rem; padding: 1rem 1.5rem 2rem; }
+      section { background: var(--panel); border: 1px solid #333; border-radius: 8px; padding: 1rem; }
+      h2 { margin: 0 0 0.75rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--paper); }
+      .server, .incident { padding: 0.75rem 0; border-bottom: 1px solid #2a2a2a; }
+      .server:last-child, .incident:last-child { border-bottom: 0; }
+      .pill {
+        display: inline-block;
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        padding: 0.1rem 0.55rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .pill.sealed { color: var(--sealed); }
+      .pill.broken { color: var(--broken); }
+      .pill.unknown { color: var(--muted); }
+      .meta { color: var(--muted); font-size: 0.85rem; margin-top: 0.35rem; }
+      .tool { margin-top: 0.75rem; }
+      .field { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.35rem; }
+      .verdict { color: var(--accent); margin: 0.35rem 0 0.5rem; }
+      .token { display: inline-block; margin: 0.15rem; padding: 0.1rem 0.35rem; border-radius: 4px; }
+      .token.added { background: rgba(125, 206, 160, 0.15); color: var(--added); }
+      .token.removed { background: rgba(241, 148, 138, 0.15); color: var(--removed); }
+      .empty { color: var(--muted); }
+      @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Customs Quarantine Console</h1>
+      <p>Live data from the running proxy — never mock.</p>
+    </header>
+    <main>
+      <section>
+        <h2>Servers</h2>
+        <div id="servers" class="empty">Loading…</div>
+      </section>
+      <section>
+        <h2>Open quarantine</h2>
+        <div id="quarantine" class="empty">Loading…</div>
+      </section>
+    </main>
+    <script>
+      const api = "";
+
+      function pill(status) {
+        const span = document.createElement("span");
+        span.className = `pill ${status}`;
+        span.textContent = status;
+        return span;
+      }
+
+      function renderTokens(words, cls) {
+        const frag = document.createDocumentFragment();
+        words.forEach((word) => {
+          const span = document.createElement("span");
+          span.className = `token ${cls}`;
+          span.textContent = word;
+          frag.appendChild(span);
+        });
+        return frag;
+      }
+
+      async function loadServers() {
+        const res = await fetch(`${api}/api/servers`);
+        const servers = await res.json();
+        const root = document.getElementById("servers");
+        root.innerHTML = "";
+        if (!servers.length) {
+          root.textContent = "No servers recorded yet. Run make demo first.";
+          root.className = "empty";
+          return;
+        }
+        root.className = "";
+        servers.forEach((server) => {
+          const row = document.createElement("div");
+          row.className = "server";
+          row.appendChild(pill(server.status));
+          const title = document.createElement("div");
+          title.textContent = `${server.label} (${server.server_id})`;
+          row.appendChild(title);
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          meta.textContent = server.seal ? `seal ${server.seal.slice(0, 16)}…` : "never pinned";
+          row.appendChild(meta);
+          root.appendChild(row);
+        });
+      }
+
+      async function loadQuarantine() {
+        const res = await fetch(`${api}/api/quarantine`);
+        const entries = await res.json();
+        const root = document.getElementById("quarantine");
+        root.innerHTML = "";
+        if (!entries.length) {
+          root.textContent = "No open quarantine incidents.";
+          root.className = "empty";
+          return;
+        }
+        root.className = "";
+        entries.forEach((entry) => {
+          const block = document.createElement("div");
+          block.className = "incident";
+          const title = document.createElement("div");
+          title.textContent = entry.server_id;
+          block.appendChild(title);
+          const meta = document.createElement("div");
+          meta.className = "meta";
+          meta.textContent = `${entry.old_seal.slice(0, 12)}… → ${entry.new_seal.slice(0, 12)}…`;
+          block.appendChild(meta);
+          entry.diffs.forEach((diff) => {
+            const tool = document.createElement("div");
+            tool.className = "tool";
+            const field = document.createElement("div");
+            field.className = "field";
+            field.textContent = `${diff.tool_name} · ${diff.field}`;
+            tool.appendChild(field);
+            if (diff.verdict) {
+              const verdict = document.createElement("div");
+              verdict.className = "verdict";
+              verdict.textContent = diff.verdict;
+              tool.appendChild(verdict);
+            }
+            if (diff.removed.length) {
+              tool.appendChild(renderTokens(diff.removed, "removed"));
+            }
+            if (diff.added.length) {
+              tool.appendChild(renderTokens(diff.added, "added"));
+            }
+            block.appendChild(tool);
+          });
+          root.appendChild(block);
+        });
+      }
+
+      loadServers();
+      loadQuarantine();
+    </script>
+  </body>
+</html>
