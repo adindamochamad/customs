@@ -36,7 +36,7 @@ Python, FastAPI, MCP (Model Context Protocol), SQLite, SHA-256, stdio transport
 **URL:** _(paste after upload — required for form)_
 
 ## Public GitHub repository
-https://github.com/adindamochamad/customs — must be public, MIT, clean clone runs.
+https://github.com/adindamochamad/customs — public, MIT. Verified: `git clone` + `make verify-clone` → 40 passed in ~43s.
 
 ## Demo application platform / Application URL
 Terminal demo: `make demo` (primary evidence for video).

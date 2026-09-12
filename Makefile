@@ -1,4 +1,4 @@
-.PHONY: install dev demo test lint clean verify-clone audit-secrets prep-video submission-check init-repo
+.PHONY: install dev demo test lint clean verify-clone audit-secrets prep-video submission-check init-repo print-submission
 
 install:
 	python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
@@ -32,3 +32,6 @@ submission-check:
 
 init-repo:
 	bash scripts/init_public_repo.sh
+
+print-submission:
+	bash scripts/print_submission_fields.sh

@@ -59,3 +59,4 @@ video, submission.
 - 2026-09-12 — init_public_repo.sh + make init-repo (dry-run / --commit, no push).
 - 2026-09-12 — Initial commit 0a60ceb (70 files). audit_git_secrets self-match fix.
 - 2026-09-12 — Public GitHub: github.com/adindamochamad/customs (main pushed).
+- 2026-09-12 — Clean clone from GitHub verified (43s, 40 tests). CI + print-submission.

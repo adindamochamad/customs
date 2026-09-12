@@ -41,7 +41,7 @@ Deadline **24 Sept 2026, 17:00 PDT**. Target submit: **24 Sept 2026,
 ```
 [x] Gate 1 lewat: test_manifest.py + test_seal_lifecycle.py, 0 xfail
 [x] Gate 2 lewat: agent nyata diblokir proxy nyata, p95 overhead <15 ms
-[x] make install && make demo jalan dari clone bersih (`make verify-clone`, ~44s)
+[x] make install && make demo jalan dari clone bersih (`make verify-clone`, ~43s; verified dari GitHub public)
 [ ] Video ≤4m40s (hard ceiling 5m00s), ≤300 MB, 1920×1080
 [x] docs/SUBMISSION.md terisi (short + long description; URL/cover/video pending)
 [ ] Repo GitHub publik, MIT, tidak ada secret di git history (lihat docs/SUBMIT.md)

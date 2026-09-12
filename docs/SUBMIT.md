@@ -37,6 +37,10 @@ Update URL di:
 
 ## 3. Form lablab (Blok L.7–L.8)
 
+```bash
+bash scripts/print_submission_fields.sh   # copy-paste helper
+```
+
 Salin dari `docs/SUBMISSION.md` (jangan compose di form):
 
 | Field | Source |

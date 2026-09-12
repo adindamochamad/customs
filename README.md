@@ -35,6 +35,8 @@ Layer 1 and 2 are deterministic. No model in the trust path.
 ## Quickstart
 
 ```bash
+git clone https://github.com/adindamochamad/customs.git
+cd customs
 make install
 make demo        # runs the rug-pull scenario, side by side
 make dev         # landing at http://127.0.0.1:8787/, console at /console
