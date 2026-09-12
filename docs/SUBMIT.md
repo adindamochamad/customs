@@ -22,7 +22,7 @@ make submission-check              # harus hijau dulu
 git init -b main                   # sekali saja, jika belum
 make init-repo                     # dry-run: stage + cek .env tidak ikut
 bash scripts/init_public_repo.sh --commit
-git remote add origin https://github.com/<user>/customs.git
+git remote add origin https://github.com/adindamochamad/customs.git
 git push -u origin main
 ```
 
