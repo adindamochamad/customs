@@ -23,7 +23,7 @@ finish a task. One line each, newest last.
 | P3 | Quarantine console | done (static console + API; Next.js deferred) |
 | P4 | Demo scenario + landing page | done |
 | P5 | Video + submission fields | in progress (assets + script ready; record pending) |
-| P6 | Clean-clone verification + submit | in progress (submission-check ready) |
+| P6 | Clean-clone verification + submit | in progress (GitHub public pushed) |
 
 ## Cut list status
 
@@ -58,3 +58,4 @@ video, submission.
 - 2026-09-12 — make submission-check, docs/SUBMIT.md, test_submission asset smoke.
 - 2026-09-12 — init_public_repo.sh + make init-repo (dry-run / --commit, no push).
 - 2026-09-12 — Initial commit 0a60ceb (70 files). audit_git_secrets self-match fix.
+- 2026-09-12 — Public GitHub: github.com/adindamochamad/customs (main pushed).

@@ -279,7 +279,7 @@ Potong jika waktu habis — video > landing page.
 [x] L.1  docs/SUBMISSION.md — short + long description, tags draft
 [x] L.2  Cover image 16:9 — docs/assets/cover.svg + cover.png export
 [ ] L.3  Technology tags final dari partner kickoff (draft ada)
-[ ] L.4  Repo GitHub publik, MIT license
+[x] L.4  Repo GitHub publik, MIT license — github.com/adindamochamad/customs
 [x] L.5  scripts/verify_clean_clone.sh + make verify-clone (~44s lokal)
 [x] L.6  git log audit — scripts/audit_git_secrets.sh (+ history scan)
 [ ] L.7  Submit form lablab (target 24 Sept 19:00 WIB)
